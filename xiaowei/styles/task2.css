@@ -1,0 +1,130 @@
+body{
+	background-color: #E0E0E0;
+}
+header {
+	background-color: #404040;
+}
+header li{
+	color: black;
+	/*display: inline;*//*会去掉黑点*/
+	float: left;
+	margin: 10px;
+}
+header a{
+	color: white;
+	text-decoration: none;
+}
+
+header nav{
+	margin-right: 20px;
+	float: right;
+}
+header img{
+	margin: 10px;
+	margin-left: 40px;
+}
+article{
+	margin: 20px;
+	background-color: white;
+	padding: 20px;
+	font-family:"黑体";
+}
+article h3{
+	color: #505050;
+}
+article span{
+	color: #606060;
+	font-size: 10px;
+}
+article p{
+	text-indent: 30px;
+	line-height: 25px;
+}
+article ul {
+	list-style: none;
+}
+article ul li{
+	height: 25px;
+}
+article div{
+	margin: 20px;
+	margin-left: 50px;
+	border: 1px solid grey;
+	padding: 5px;
+	display: inline-block;
+}
+article div img{
+	margin: 20px;
+	margin-bottom: 5px;
+	max-width: 500px;
+}
+article ol li{
+	font-family: "黑体";
+	height: 25px;
+}
+span.description {
+	font-size: 18px;
+	color: black;
+}
+article table{
+	width: 100%;
+}
+article th{
+	background-color: black;
+	color: white;
+}
+article table tr:last-child{
+	background-color: grey;
+}
+div{
+	margin: 20px;
+	background-color: white;
+	padding: 20px;
+	font-family:"黑体";
+}
+
+form label{
+	display: inline-block;
+	width: 425px;
+	height: 30px;
+	text-align: right;
+}
+
+p.description{
+	position: absolute;
+	left: 450px;
+	color: grey;
+	margin: 1px;
+}
+div.inform{
+	position: relative;
+	overflow: hidden;
+	min-width: 1200px;
+	margin:10px;
+	padding: 20px;
+}
+
+textarea{
+	vertical-align: top;
+	font-size: 20px;
+	font-family: "黑体"
+}
+#submit{
+	margin-top:10px;
+	font-size: 25px;
+	color: white;
+	background-color: blue;
+	width: 100%;
+	height:50px;
+	border-radius: 10px;
+}
+footer{
+	background-color: black;
+	height: 80px;
+}
+footer p{
+	color: white;
+	font-family: "黑体";
+	text-align: center;
+	padding: 20px;
+}
