@@ -1,0 +1,160 @@
+body{
+	background-color: #E0E0E0;
+	padding:0;
+	margin: 0;   /*body有默认的margin，吐血...*/
+}
+header {
+	background-color: #404040;
+	position: relative;
+	width: 100%;
+}
+header li{
+	color: black;
+	/*display: inline;*//*会去掉黑点*/
+	float: left;
+	margin: 10px;
+}
+header a{
+	color: white;
+	text-decoration: none;
+}
+
+header nav{
+	margin-right: 20px;
+	float: right;
+}
+header img{
+	margin: 10px;
+	margin-left: 40px;
+}
+article{
+	margin: 20px 0;
+	background-color: white;
+	padding: 20px;
+	font-family:"黑体";
+}
+article h3{
+	color: #505050;
+}
+article span{
+	color: #606060;
+	font-size: 10px;
+}
+article p{
+	text-indent: 30px;
+	line-height: 25px;
+	margin: 8px;
+}
+article ul {
+	list-style: none;
+}
+article ul li{
+	height: 25px;
+}
+article div{
+	margin: 20px;
+	margin-left: 15px;
+	border: 1px solid grey;
+	padding: 0;
+	display: inline-block;
+}
+article div img{
+	margin: 10px;
+	margin-top: 0;
+	max-width: 150px;
+}
+article img{
+	max-width: 500px;
+}
+article ol li{
+	font-family: "黑体";
+	height: 25px;
+}
+span.description {
+	font-size: 18px;
+	color: black;
+}
+article table{
+	width: 100%;
+}
+article th{
+	background-color: black;
+	color: white;
+}
+article table tr:last-child{
+	background-color: grey;
+}
+div{
+	margin: 20px;
+	background-color: white;
+	padding: 20px;
+	font-family:"黑体";
+}
+
+form label{
+	display: inline-block;
+	width: 145px;
+	height: 30px;
+	text-align: right;
+}
+
+p.description{
+	position: absolute;
+	left: 150px;
+	color: grey;
+	margin: 1px;
+}
+div.inform{
+	position: relative;
+	overflow: hidden;
+	min-width: 1200px;
+	margin:0px;
+	padding: 20px;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+textarea{
+	vertical-align: top;
+	font-size: 20px;
+	font-family: "黑体"
+}
+#submit{
+	margin-top:10px;
+	font-size: 25px;
+	color: white;
+	background-color: blue;
+	width: 350px;
+	height:50px;
+	border-radius: 10px;
+}
+footer{
+	background-color: black;
+	height: 80px;
+	width: 100%;
+}
+footer p{
+	color: white;
+	font-family: "黑体";
+	text-align: center;
+	padding-top: 30px;
+}
+#right h2{
+	border-left: 5px solid grey;
+	padding-left: 20px;
+	line-height: 40px;
+	margin:0;
+}
+#right{
+	position: absolute;
+	top: 65px;
+	right: 5px;
+	width: 350px;
+	overflow: hidden;
+	padding-bottom: 0;
+}
+#left{
+	margin-right: 435px;
+	padding: 0;
+	background-color: #E0E0E0;
+}
