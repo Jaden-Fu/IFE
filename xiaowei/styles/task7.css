@@ -36,11 +36,11 @@ header nav li{
 }
 header a{
 	display: inline;
-	vertical-align: middle;
 	text-decoration: none;
 	padding: 1em;
 	font-family: "黑体";
 	color: #787b83;
+	box-sizing: border-box;
 }
 .here{
 	color: red;
@@ -54,6 +54,8 @@ header a{
 	background-color: white;
 	width: 1280px;
 	margin: 0 auto;
+	position: relative;
+	top: -3px;
 }
 #div1{
 	background-image: url(../images/task7_1.jpg);
