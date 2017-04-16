@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IFE JavaScript Task 04</title>
+  <style>
+    div{
+      background-color: red;
+      color: white;
+      display: inline-block;
+      margin: 5px;
+      padding: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <input type="number" id="text1" required="required" />
+  <input type="button" value="左侧入">
+  <input type="button" value="右侧入">
+  <input type="button" value="左侧出">
+  <input type="button" value="右侧出"><br />
+
+  <script>
+    var oArray = [10,3,7,12,11,30];
+    (function(){
+      for (var i = 0; i < oArray.length; i++) {
+        div = document.createElement('div');
+        div.innerHTML = oArray[i];
+        document.body.appendChild(div);
+      }
+    })();
+    var text1 = document.getElementById('text1');
+    var oBtns = document.getElementsByTagName('input');
+    var oDivs = document.getElementsByTagName('div');
+    oBtns[1].onclick = function(){
+      if (text1.value) {
+        oArray.unshift(text1.value);
+        div = document.createElement('div');
+        para = document.createTextNode(text1.value);
+        div.appendChild(para);
+        document.body.insertBefore(div,oDivs[0]);
+      }else{
+        alert('请输入数字');
+      }
+    }
+    oBtns[2].onclick = function(){
+      if (text1.value) {
+        oArray.push(text1.value);
+        div = document.createElement('div');
+        para = document.createTextNode(text1.value);
+        div.appendChild(para);
+        document.body.appendChild(div);
+      }else{
+        alert('请输入数字');
+      }
+    }
+    oBtns[3].onclick = function(){
+      var num1 = oArray.shift();
+      oDivs[0].outerHTML = '';
+      alert(num1);
+    }
+    oBtns[4].onclick = function(){
+      var num1 = oArray.pop();
+      oDivs[oDivs.length-1].outerHTML = '';
+      alert(num1);
+    }
+  </script>
+</body>
+</html>
