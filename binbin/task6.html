@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IFE JavaScript Task 04</title>
+  <style>
+    div{
+      background-color: red;
+      color: white;
+      display: inline-block;
+      margin: 5px;
+      padding: 0.5em;
+    }
+    textarea{
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+<body>
+  <textarea name="text1" id="text1" cols="30" rows="10" placeholder="输入多条内容请用逗号隔开"></textarea>
+  <input type="button" value="左侧入">
+  <input type="button" value="右侧入">
+  <input type="button" value="左侧出">
+  <input type="button" value="右侧出">
+  <input type="text" id="search">
+  <input type="button" value="查询"><br />
+
+  <script>
+    var oArray = [10,3,7,12,11,30];
+    (function(){
+      for (var i = 0; i < oArray.length; i++) {          //创建原始元素
+        div = document.createElement('div');
+        div.innerHTML = oArray[i];
+        document.body.appendChild(div);
+      }
+    })();
+    var text1 = document.getElementById('text1');
+    var oBtns = document.getElementsByTagName('input');
+    var oDivs = document.getElementsByTagName('div');
+    var tSearch = document.getElementById('search');
+    oBtns[0].onclick = function(){    //左侧入                   
+      if (text1.value) {
+        texts = text1.value.split(',');
+        for (var i = 0; i < texts.length; i++) {
+          oArray.unshift(texts[i]);
+          div = document.createElement('div');
+          para = document.createTextNode(texts[i]);
+          div.appendChild(para);
+          document.body.insertBefore(div,oDivs[0]);
+        }
+      }else{
+        alert('请输入数字');
+      }
+    }
+    oBtns[1].onclick = function(){   //右侧入
+      if (text1.value) {
+        texts = text1.value.split(',');
+        for (var i = 0; i < texts.length; i++) {
+          oArray.push(texts[i]);
+          div = document.createElement('div');
+          para = document.createTextNode(texts[i]);
+          div.appendChild(para);
+          document.body.appendChild(div);
+        }
+      }else{
+        alert('请输入数字');
+      }
+    }
+    oBtns[2].onclick = function(){  //左侧出
+      var num1 = oArray.shift();
+      oDivs[0].outerHTML = '';
+      alert(num1);
+    }
+    oBtns[3].onclick = function(){  //右侧出
+      var num1 = oArray.pop();
+      oDivs[oDivs.length-1].outerHTML = '';
+      alert(num1);
+    }
+    oBtns[5].onclick = function(){   //查询
+      if (tSearch.value) {
+        for (var i = 0; i < oArray.length; i++) {
+          if (oArray[i].toString().indexOf(tSearch.value.toString())>-1) { //转换成字符串并判断是否包含目标
+            oDivs[i].style.backgroundColor = 'green';
+          }else{
+            oDivs[i].style.backgroundColor = 'red';
+          }
+        }
+      }else{
+        alert('请输入查询内容');
+      }
+    }
+  </script>
+</body>
+</html>
