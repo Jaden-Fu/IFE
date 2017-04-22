@@ -73,23 +73,43 @@
       alert(num1);
     }
     oBtns[5].onclick = function(){       //排序
-      for (var i = 0;oDivs.length > 0; i++) {
-        oDivs[0].parentNode.removeChild(oDivs[0]);  //清空div
-      }
-      for (var i = 0; i < oArray.length; i++) {   //对数组升序排列
-        for (var j = i; j < oArray.length; j++) {
-          if (oArray[i] > oArray[j]) {
-            var m = oArray[j];
-            oArray[j] = oArray[i];
-            oArray[i] = m;
-          }
+      // for (var i = 0; i < oArray.length; i++) {   //对数组升序排列
+      //   for (var j = i; j < oArray.length; j++) {
+      //     if (oArray[i] > oArray[j]) {
+      //       var m = oArray[j];
+      //       oArray[j] = oArray[i];
+      //       oArray[i] = m;
+      //     }
+      //   }
+      // }
+      // for (var i = 0; i < oArray.length; i++) {
+      //   oDivs[i].style.height = oArray[i] + 'px';  //重新设置元素高度
+      // }
+      var i = 0,j = 0;
+      function comparison(){
+        for (var n = 0; n < oDivs.length; n++) {  //元素恢复红色
+          oDivs[n].style.backgroundColor = 'red';
         }
+        if (j == oArray.length) {
+          i++;
+          j = i;
+        }
+        if (i == oArray.length) {
+          clearInterval(compare);
+          return false;
+        }
+        oDivs[i].style.backgroundColor = 'green';
+        oDivs[j].style.backgroundColor = 'green';  //正在比较的元素设为绿色
+        if (oArray[i] > oArray[j]) {
+          var m = oArray[j];
+          oArray[j] = oArray[i];
+          oArray[i] = m;
+          oDivs[i].style.height = oArray[i] + 'px';
+          oDivs[j].style.height = oArray[j] + 'px';
+        }
+        j++;
       }
-      for (var i = 0; i < oArray.length; i++) {
-        div = document.createElement('div');
-        div.style.height = oArray[i]+"px";
-        document.body.appendChild(div);   //创建元素并设置高度
-      }
+      var compare = setInterval(comparison,1000);
     }
   </script>
 </body>
