@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小方块2</title>
+	<style>
+		body{
+			margin: 0;
+			padding:0;
+			background-color: black;
+			text-align: center;
+		}
+		table{
+			border-collapse: collapse;
+		}
+		#container{
+			background-color: white;
+			display: inline-block;
+			width: 550px;
+			height: 560px;
+			position: relative;
+		}
+		#tableTop{
+			margin-left: 45px;
+		}
+		#tableLeft{
+			margin-bottom: 10px;
+		}
+		#table_m{
+			border: 2px solid black;
+			position: absolute;
+			left: 45px;
+			top: 45px;
+		}
+		#table_m td{
+			border:1px solid grey;
+			box-sizing: border-box;
+		}
+		tr{
+			height: 45px;
+		}
+		td{
+			width: 45px;
+			margin: 0;
+			padding: 0;
+		}
+		#smallBox{
+			display: inline-block;
+			width: 45px;
+			height: 45px;
+			background-color: red;
+			border-top: 10px solid blue;
+			box-sizing: border-box;
+			position: absolute;
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<table id='tableTop'>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+				</tr>
+			</tbody>      <!-- 行数 -->    
+		</table>
+		<table id='tableLeft'>
+			<tbody>
+				<tr>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td>10</td>
+				</tr>
+			</tbody>    <!-- 列数 -->
+		</table>
+		<table id="table_m">       <!--  格子空间 -->
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="smallBox" style="left: 226px;top: 226px;transform: rotate(0deg);"></div>   <!-- 小方块 -->
+		<input type="text" id="move">
+		<button id="start">执行</button>
+		<button id="GO">GO</button>
+		<button id="TRALEF">TRA LEF</button>
+		<button id="TRATOP">TRA TOP</button>
+		<button id="TRARIG">TRA RIG</button>
+		<button id="TRABOT">TRA BOT</button>
+		<button id="MOVLEF">MOV LEF</button>
+		<button id="MOVTOP">MOV TOP</button>
+		<button id="MOVRIG">MOV RIG</button>
+		<button id="MOVBOT">MOV BOT</button>
+	</div>
+	<script>
+		var move = document.getElementById('move'),
+			start = document.getElementById('start'),
+			smallBox = document.getElementById('smallBox'),
+			GO = document.getElementById('GO'),
+			TRALEF = document.getElementById('TRALEF'),
+			TRATOP = document.getElementById('TRATOP'),
+			TRARIG = document.getElementById('TRARIG'),
+			TRABOT = document.getElementById('TRABOT'),
+			MOVLEF = document.getElementById('MOVLEF'),
+			MOVTOP = document.getElementById('MOVTOP'),
+			MOVRIG = document.getElementById('MOVRIG'),
+			MOVBOT = document.getElementById('MOVBOT'),
+			deg = 0;
+			// i = 1;
+		function moveBox(direction){   //上下左右移动元素
+			// if (i>1&&i!=11) {
+			// 	alert('请等待当前动作完成！');
+			// 	return;
+			// }
+			// i = 1;
+			switch(direction){
+				case 'up':
+					if (parseInt(smallBox.style.top) <= 46) {
+						alert('将超出格子范围！');
+						return;
+					}
+					// smallBox.movement = setInterval(function(){
+					// 	if (i==10) clearInterval(smallBox.movement);
+					// 	smallBox.style.top = parseFloat(smallBox.style.top)-4.5+'px';
+					// 	i++;
+					// },100)
+					smallBox.style.top = parseInt(smallBox.style.top)-45+'px';
+					break;
+				case 'down':
+					if (parseInt(smallBox.style.top) >= 451) {
+						alert('将超出格子范围！');
+						return;
+					}
+					// smallBox.movement = setInterval(function(){
+					// 	if (i==10) clearInterval(smallBox.movement);
+					// 	smallBox.style.top = parseFloat(smallBox.style.top)+4.5+'px';
+					// 	i++;
+					// },100)
+					smallBox.style.top = parseInt(smallBox.style.top)+45+'px';
+					break;
+				case 'left':
+					if (parseInt(smallBox.style.left) <= 46) {
+						alert('将超出格子范围！');
+						return;
+					}
+					// smallBox.movement = setInterval(function(){
+					// 	if (i==10) clearInterval(smallBox.movement);
+					// 	smallBox.style.left = parseFloat(smallBox.style.left)-4.5+'px';
+					// 	i++;
+					// },100)
+					smallBox.style.left = parseInt(smallBox.style.left)-45+'px';
+					break;
+				case 'right':
+					if (parseInt(smallBox.style.left) >= 451) {
+						alert('将超出格子范围！');
+						return;
+					}
+					// smallBox.movement = setInterval(function(){
+					// 	if (i==10) clearInterval(smallBox.movement);
+					// 	smallBox.style.left = parseFloat(smallBox.style.left)+4.5+'px';
+					// 	i++;
+					// },100)
+					smallBox.style.left = parseInt(smallBox.style.left)+45+'px';
+					break;
+			}
+		}
+		function go(){ 			//向前移动
+			if (deg/90%4==0) {
+				if (parseInt(smallBox.style.top) == 46) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.top = parseInt(smallBox.style.top)-45+'px';
+			}else if (deg/90%4==3||deg/90%4==-1) {
+				if (sparseInt(smallBox.style.left) == 46) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.left = parseInt(smallBox.style.left)-45+'px';
+			}else if (deg/90%4==2||deg/90%4==-2) {
+				if (parseInt(smallBox.style.top) == 451) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.top = parseInt(smallBox.style.top)+45+'px';
+			}else if (deg/90%4==1||deg/90%4==-3) {
+				if (parseInt(smallBox.style.left) == 451) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.left = parseInt(smallBox.style.left)+45+'px';
+			}
+		}
+		function moveL(){  //转向左并前进
+			smallBox.style.transform = 'rotate('+(-90)+'deg)';
+			deg = -90;
+			setTimeout(function(){moveBox('left');},1000)
+		}
+		function moveT(){  //转向上并前进
+			smallBox.style.transform = 'rotate('+0+'deg)';
+			deg = 0;
+			setTimeout(function(){moveBox('up');},1000)
+		}
+		function moveR(){  //转向右并前进
+			smallBox.style.transform = 'rotate('+90+'deg)';
+			deg = 90;
+			setTimeout(function(){moveBox('right');},1000)
+		}
+		function moveB(){	//转向下并前进
+			smallBox.style.transform = 'rotate('+180+'deg)';
+			deg = 180;
+			setTimeout(function(){moveBox('down');},1000)
+		}
+		window.onbeforeunload = function(){
+			return '确认关闭？';
+		}
+		start.onclick = function() {
+			switch(move.value.toUpperCase()){
+				case 'GO':
+					go();
+					break;
+				case 'TRA LEF':
+					moveBox('left');
+					break;
+				case 'TRA TOP':
+					moveBox('up');
+					break;
+				case 'TRA RIG':
+					moveBox('right');
+					break;
+				case 'TRA BOT':
+					moveBox('down');
+					break;
+				case 'MOV LEF':
+					moveL();
+					break;
+				case 'MOV TOP':
+					moveL();
+					break;
+				case 'MOV RIG':
+					moveR();
+					break;
+				case 'MOV BOT':
+					moveB();
+					break;
+			}
+		}
+		GO.onclick = go;
+		TRALEF.onclick = function(){
+			moveBox('left');
+		}
+		TRATOP.onclick = function(){
+			moveBox('up');
+		}
+		TRARIG.onclick = function(){
+			moveBox('right');
+		}
+		TRABOT.onclick =function(){
+			moveBox('down');
+		}
+		MOVLEF.onclick = function(){
+			moveL();
+		}
+		MOVTOP.onclick = function(){
+			moveT();
+		}
+		MOVRIG.onclick = function(){
+			moveR();
+		}
+		MOVBOT.onclick = function(){
+			moveB();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小方块1</title>
+	<style>
+		body{
+			margin: 0;
+			padding:0;
+			background-color: black;
+			text-align: center;
+		}
+		table{
+			border-collapse: collapse;
+		}
+		#container{
+			background-color: white;
+			display: inline-block;
+			width: 550px;
+			height: 550px;
+			position: relative;
+		}
+		#tableTop{
+			margin-left: 45px;
+		}
+		#tableLeft{
+			margin-bottom: 10px;
+		}
+		#table_m{
+			border: 2px solid black;
+			position: absolute;
+			left: 45px;
+			top: 45px;
+		}
+		#table_m td{
+			border:1px solid grey;
+			box-sizing: border-box;
+		}
+		tr{
+			height: 45px;
+		}
+		td{
+			width: 45px;
+			margin: 0;
+			padding: 0;
+		}
+		#smallBox{
+			display: inline-block;
+			width: 45px;
+			height: 45px;
+			background-color: red;
+			border-top: 10px solid blue;
+			box-sizing: border-box;
+			position: absolute;
+			transition: 1s; /*动画效果，相见恨晚！！！*/
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<table id='tableTop'>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+				</tr>
+			</tbody>      <!-- 行数 -->    
+		</table>
+		<table id='tableLeft'>
+			<tbody>
+				<tr>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td>10</td>
+				</tr>
+			</tbody>    <!-- 列数 -->
+		</table>
+		<table id="table_m">       <!--  格子空间 -->
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="smallBox" style="left: 226px;top: 226px;transform: rotate(0deg);"></div>   <!-- 小方块 -->
+		<input type="text" id="move">
+		<button id="start">执行</button>
+		<button id="GO">GO</button>
+		<button id="TUNLEF">TUN LEF</button>
+		<button id="TUNRIG">TUN RIG</button>
+		<button id="TUNBAC">TUN BAC</button>
+	</div>
+	<script>
+		var move = document.getElementById('move'),
+			start = document.getElementById('start'),
+			smallBox = document.getElementById('smallBox'),
+			GO = document.getElementById('GO'),
+			TUNLEF = document.getElementById('TUNLEF'),
+			TUNRIG = document.getElementById('TUNRIG'),
+			TUNBAC = document.getElementById('TUNBAC'),
+			deg = 0;
+		function go(){ 			//向前移动
+			if (deg/90%4==0) {
+				if (parseInt(smallBox.style.top) == 46) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.top = parseInt(smallBox.style.top)-45+'px';
+			}else if (deg/90%4==3||deg/90%4==-1) {
+				if (sparseInt(smallBox.style.left) == 46) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.left = parseInt(smallBox.style.left)-45+'px';
+			}else if (deg/90%4==2||deg/90%4==-2) {
+				if (parseInt(smallBox.style.top) == 451) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.top = parseInt(smallBox.style.top)+45+'px';
+			}else if (deg/90%4==1||deg/90%4==-3) {
+				if (parseInt(smallBox.style.left) == 451) {
+					alert('将超出格子范围！');
+					return;
+				}
+				smallBox.style.left = parseInt(smallBox.style.left)+45+'px';
+			}
+		}
+		function turnL(){  //向左转
+			smallBox.style.transform = 'rotate('+(deg-90)+'deg)';
+			deg = deg-90;
+		}
+		function turnR(){  //向右转
+			smallBox.style.transform = 'rotate('+(deg+90)+'deg)';
+			deg = deg+90;
+		}
+		function turnB(){	//向后转
+			smallBox.style.transform = 'rotate('+(deg+180)+'deg)';
+			deg = deg+180;
+		}
+		window.onbeforeunload = function(){
+			return '确认关闭？';
+		}
+		start.onclick = function() {
+			switch(move.value.toUpperCase()){
+				case 'GO':
+					go();
+					break;
+				case 'TUN LEF':
+					turnL();
+					break;
+				case 'TUN RIG':
+					turnR();
+					break;
+				case 'TUN BAC':
+					turnB();
+					break;
+			}
+		}
+		GO.onclick = go;
+		TUNLEF.onclick = turnL;
+		TUNRIG.onclick = turnR;
+		TUNBAC.onclick = turnB;
+	</script>
+</body>
+</html>

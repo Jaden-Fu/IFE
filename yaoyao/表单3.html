@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单3</title>
+</head>
+<body>
+	<label for=""><input id='radioA' type="radio" name="role" checked="true">在校生</label>
+	<label for=""><input id="radioB" type="radio" name="role">非在校生</label>
+	<form action="" id="inSchool" style="display: block">
+		<label for="school">学校
+			<select name="location" id="location">
+				<option value="北京">北京</option>
+				<option value="武汉">武汉</option>
+			</select>
+			<select name="school" id="school">
+				<option value="北京大学">北京大学</option>
+				<option value="清华大学">清华大学</option>
+			</select>
+		</label>
+	</form>
+	<form action="" id="notInSchool" style="display: none">
+		<label for="company">就业单位
+			<input type="text">
+		</label>
+	</form>
+	<script>
+		var radioA = document.getElementById('radioA'),
+			radioB = document.getElementById('radioB'),
+			inSchool = document.getElementById('inSchool'),
+			notInSchool = document.getElementById('notInSchool');
+			oSelects = document.getElementsByTagName('select');
+		radioA.onclick = function(){
+			inSchool.style.display = 'block';
+			notInSchool.style.display = 'none';
+		}
+		radioB.onclick = function(){
+			inSchool.style.display = 'none';
+			notInSchool.style.display = 'block';
+		}
+		oSelects[0].onchange = function(){
+			oSelects[1].options.length = 0;
+			switch(oSelects[0].options[oSelects[0].selectedIndex].text){
+				case '北京':
+					var option1 = document.createElement('option'),
+						option2 = document.createElement('option');
+					option1.text = '北京大学';
+					option2.text = '清华大学';
+					oSelects[1].add(option1);
+					oSelects[1].add(option2);
+					break;
+				case '武汉':
+					var option1 = document.createElement('option'),
+						option2 = document.createElement('option');
+					option1.text = '武汉大学';
+					option2.text = '武汉科技大学';
+					oSelects[1].add(option1);
+					oSelects[1].add(option2);
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

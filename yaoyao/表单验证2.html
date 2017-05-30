@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证2</title>
+	<style>
+		label{
+			display: inline-block;
+			width: 100px;
+			text-align: right;
+			height: 50px;
+		}
+		.prompt{
+			color:grey;
+			font-size: 12px;
+			margin: 0;
+			margin-left:108px; 
+			padding: 0;
+			position: relative;
+			top: -25px;
+		}
+	</style>
+</head>
+<body>
+	<label for="name">名字</label>
+	<input type="text" id="name" /><br />
+	<p class="prompt">&nbsp</p>
+	<label for="passwords">密码</label>
+	<input type="password" id="passwords" /><br />
+	<p class="prompt">&nbsp</p>
+	<label for="passwords2">密码确认</label>
+	<input type="password" id="passwords2" /><br />
+	<p class="prompt">&nbsp</p>
+	<label for="Email">邮箱</label>
+	<input type="text" id="Email" /><br />
+	<p class="prompt">&nbsp</p>
+	<label for="pNumber">手机</label>
+	<input type="text" id="pNumber" />
+	<p class="prompt">&nbsp</p>
+	<button id="test">提交</button><br />
+	<script>
+		var reg1 = /\u4e00-\u9fa5/,
+			regPasswords = /\d{6,}/,
+			regEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+			regPhone = /\d{11,11}/;
+		var test = document.getElementById('test');
+		var name1 = document.getElementById('name'),
+			passwords = document.getElementById('passwords'),
+			passwords2 = document.getElementById('passwords2'),
+			Email = document.getElementById('Email'),
+			pNumber = document.getElementById('pNumber'),
+			ps = document.getElementsByTagName('p')
+			len = 0;
+		name1.onfocus = function(){
+			if (name1.value == '') {
+				ps[0].innerHTML = '必填，长度为4~16个字符';
+				ps[0].style.color = 'grey';
+			}
+		}
+		name1.onblur = function(){
+			len = 0;
+			for (var i = 0; i < name1.value.length; i++) {
+				if (reg1.test(name1.value.charAt(i))) {
+					len = len+2;
+				}else{
+					len++;
+				}
+			}
+			if (name1.value == '') {
+				ps[0].innerHTML = "姓名不能为空";
+				ps[0].style.color = 'red';
+				return;
+			}
+			if (len<4||len>16) {
+				ps[0].innerHTML = "必填，长度为4~16个字符";
+				ps[0].style.color = 'grey';
+				return;
+			}
+			ps[0].innerHTML = "名称格式正确";
+			ps[0].style.color = 'blue';
+		}
+		passwords.onfocus = function(){
+			if (passwords.value == '') {
+				ps[1].innerHTML = '请输入6位数字密码';
+				ps[1].style.color = 'grey';
+			}
+		}
+		passwords.onblur = function(){
+			if (regPasswords.test(passwords.value)) {
+				ps[1].innerHTML = '密码可用';
+				ps[1].style.color = 'blue';
+			}else{
+				ps[1].innerHTML = '请输入6位数字密码';
+				ps[1].style.color = 'red';
+			}
+		}
+		passwords2.onfocus = function(){
+			if (passwords2.value == '') {
+				ps[2].innerHTML = '再次输入相同密码';
+				ps[2].style.color = 'grey';
+			}
+		}
+		passwords2.onblur= function(){
+			if (passwords2.value == passwords.value&&passwords2.value!='') {
+				ps[2].innerHTML = '密码输入一致';
+				ps[2].style.color = 'blue';
+			}else{
+				ps[2].innerHTML = '再次输入相同密码';
+				ps[2].style.color = 'red';
+			}
+		}
+		Email.onfocus = function(){
+			if (Email.value == '') {
+				ps[3].innerHTML = '请输入邮箱';
+				ps[3].style.color = 'grey';
+			}
+		}
+		Email.onblur = function(){
+			if (regEmail.test(Email.value)) {
+				ps[3].innerHTML = '邮箱格式正确';
+				ps[3].style.color = 'blue';
+			}else{
+				ps[3].innerHTML = '请输入邮箱';
+				ps[3].style.color = 'red';
+			}
+		}
+		pNumber.onfocus = function(){
+			if (pNumber.value == '') {
+				ps[4].innerHTML = '请输入手机号码';
+				ps[4].style.color = 'grey';
+			}
+		}
+		pNumber.onblur = function(){
+			if (regPhone.test(pNumber.value)) {
+				ps[4].innerHTML = '手机格式正确';
+				ps[4].style.color = 'blue';
+			}else{
+				ps[4].innerHTML = '请输入手机号码';
+				ps[4].style.color = 'red';
+			}
+		}
+		test.onclick = function(){
+			len = 0;
+			for (var i = 0; i < name1.value.length; i++) {
+				if (reg1.test(name1.value.charAt(i))) {
+					len = len+2;
+				}else{
+					len++;
+				}
+			}
+			if (len>=4&&len<=16&&regPasswords.test(passwords.value)&&passwords2.value == passwords.value&&passwords2.value!=''&&regEmail.test(Email.value)&&regPhone.test(pNumber.value)) {
+				alert('提交成功');
+			}else{
+				alert('输入有误');
+			}
+		}
+	</script>
+</body>
+</html>
